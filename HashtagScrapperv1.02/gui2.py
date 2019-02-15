@@ -7,10 +7,12 @@ from tkinter import messagebox
 import base64
 from urllib.request import urlopen
 
+## Loading Background Image for label online from the given URL
 image_url = "https://i.imgur.com/W5Xc8cK.png"
 image_byt = urlopen(image_url).read()
 image_b64 = base64.encodebytes(image_byt)
 
+## Module for fetching the tweets of the given topic
 def getTweets(querry,number_of_tweets,consumer_key,consumer_secret_key,access_key,access_secret_key):
     
     ##Authentication
@@ -61,6 +63,7 @@ def getTweets(querry,number_of_tweets,consumer_key,consumer_secret_key,access_ke
         heading="Invalid Keys"
         messagebox.showinfo(heading,message)
 
+## Validating the TextFields for empty values.
 def validate(topicEntry,topicEntry1,consumer_keyEntry,consumer_secret_keyEntry,access_keyEntry,access_secret_keyEntry):
     if (str(topicEntry.get())=='' or not str(topicEntry.get())):
         message="Enter Valid Topic"
@@ -90,7 +93,7 @@ def validate(topicEntry,topicEntry1,consumer_keyEntry,consumer_secret_keyEntry,a
         getTweets(str(topicEntry.get()),str(topicEntry1.get()),str(consumer_keyEntry.get()),str(consumer_secret_keyEntry.get()),str(access_keyEntry.get()),str(access_secret_keyEntry.get()))
 
 
-
+## Main Graphical window Initiation
 window=Tk()
 window.geometry("620x500+350+100")
 window.title("Tweet Scrapping")
